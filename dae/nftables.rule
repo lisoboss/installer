@@ -1,0 +1,16 @@
+#!/usr/sbin/nft -f
+
+flush ruleset
+
+table inet dae {
+        chain forward {
+                type filter hook forward priority filter; policy accept;
+                ct state established,related accept
+                ip saddr 192.168.0.0/16 accept # 你需要转发的局域网网段
+        }
+
+        chain postrouting {
+                type nat hook postrouting priority srcnat; policy accept;
+                oifname "eth0" masquerade # 你的流量转发网口
+        }
+}
