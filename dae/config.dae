@@ -4,8 +4,8 @@ global {
   lan_interface: eth0 # 默认流量出口, 或者局域网流量入口
   #wan_interface: auto # 关闭设备内部访问代理
 
-  log_level: info
-  allow_insecure: false
+  log_level: none  # 不开启日志
+  allow_insecure: true  # 使用机场有些设置为 true 速度快但不安全
   auto_config_kernel_parameter: true
 }
 

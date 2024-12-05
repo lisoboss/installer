@@ -39,7 +39,9 @@ sudo mv dlc.dat /usr/local/share/dae/geosite.dat
 
 You set it up yourself, See: https://github.com/daeuniverse/dae/blob/main/docs/en/README.md
 
-Or use my config.dae, remember to change the network interface.
+Official [example.dae](https://github.com/daeuniverse/dae/blob/main/example.dae)
+
+Or use my [config.dae](https://github.com/lisoboss/installer/blob/main/dae/config.dae), remember to change the network interface.
 
 ```sh
 curl -sL -O https://github.com/lisoboss/installer/raw/main/dae/config.dae
@@ -77,6 +79,38 @@ sudo bash -c "nft list ruleset > /etc/nftables.conf"
 sudo sh -c "$(curl -sL https://raw.githubusercontent.com/daeuniverse/dae-installer/main/uninstaller.sh)"
 ```
 
+### Safe Public DNS Server
+
+Install dae v0.9.0rc2 to support DoH, DoT, DoH3, DoQ
+
+```sh
+sudo sh -c "$(curl -sL https://github.com/daeuniverse/dae-installer/raw/main/installer.sh)" @ install-prerelease
+```
+
+```txt
+alidns:
+  'tcp://dns.alidns.com:53'
+  'h3://dns.alidns.com'
+  'http3://dns.alidns.com'
+  'quic://dns.alidns.com'
+  'tls://dns.alidns.com'
+
+Google:
+  'https://dns.google/dns-query'
+  'tls://dns.google'
+
+Cloudflare:
+  'https://cloudflare-dns.com/dns-query'
+  'tls://one.one.one.one'
+
+AdGuard:
+  'https://dns.adguard.com/dns-query'
+  'quic://dns.adguard.com:784'
+  'quic://dns-unfiltered.adguard.com'
+
+Quad9:
+  'https://dns.quad9.net/dns-query'
+```
 
 ## Thanks to
 
