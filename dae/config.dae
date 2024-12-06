@@ -24,6 +24,7 @@ dns {
     request {
       qname(suffix: github.com) -> googledns
       qname(geosite:category-ads-all) -> reject # 广告过滤
+      qname(geosite:geolocation-!cn) -> googledns
       fallback: alidns
     }
     response {
@@ -45,6 +46,7 @@ group {
 routing {
   pname(NetworkManager) -> direct
   dip(224.0.0.0/3, 'ff00::/8') -> direct
+  dip(geoip:private) -> direct
 
   ### 以下为自定义规则
 
@@ -52,7 +54,6 @@ routing {
   domain(geosite:category-ads-all) -> block # 广告过滤
 
   # frist direct
-  dip(geoip:private) -> direct
   dip(geoip:cn) -> direct
   domain(geosite:icloud) -> direct
   domain(geosite:apple-cn) -> direct
